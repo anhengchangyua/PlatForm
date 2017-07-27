@@ -1,5 +1,6 @@
 package com.zhy.guolinstudy.hll_ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -33,6 +34,16 @@ public class SignUpDelegate extends HLDelegate {
     @BindView(R2.id.edit_sign_up_cppassword)
     TextInputEditText mCopyPassWord = null;
 
+    private ISignListener mISignListener = null;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener) {
+            mISignListener = (ISignListener) activity;
+        }
+    }
+
     @OnClick(R2.id.btn_sign_up)
     void onClickSignUp() {
         if (checkForm()) {
@@ -41,7 +52,7 @@ public class SignUpDelegate extends HLDelegate {
                     .success(new ISuccess() {
                         @Override
                         public void onSuccess(String response) {
-                            SignHandler.onSignUp(response);
+                            SignHandler.onSignUp(response,mISignListener);
                         }
                     })
                     .build()

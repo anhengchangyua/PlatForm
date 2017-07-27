@@ -1,12 +1,17 @@
 package com.zhy.guolinstudy.hll_ec.launcher;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
 import com.zhy.guolinstudy.R;
+import com.zhy.guolinstudy.hll_core.app.AcountManager;
+import com.zhy.guolinstudy.hll_core.app.IUserChecker;
 import com.zhy.guolinstudy.hll_core.delegates.HLDelegate;
+import com.zhy.guolinstudy.hll_core.ui.launcher.ILauncherListener;
+import com.zhy.guolinstudy.hll_core.ui.launcher.OnLauncherFinishTag;
 import com.zhy.guolinstudy.hll_core.ui.launcher.ScrollLauncherTag;
 import com.zhy.guolinstudy.hll_core.util.HLPreference;
 import com.zhy.guolinstudy.hll_core.util.timer.BaseTimerTask;
@@ -30,6 +35,15 @@ public class LauncherDelegate extends HLDelegate implements ItimerListener {
 
     private Timer mTimer = null;
     private int count = 5;
+    private ILauncherListener mILauncherListener = null;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
+    }
 
     @OnClick(R.id.tv_launcher_timer)
     public void onClick() {
@@ -62,6 +76,21 @@ public class LauncherDelegate extends HLDelegate implements ItimerListener {
             start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
             //检查用户是否登录APP
+            AcountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGHED);
+                    }
+                }
+            });
         }
     }
 

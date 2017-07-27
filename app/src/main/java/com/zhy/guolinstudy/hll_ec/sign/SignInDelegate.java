@@ -1,5 +1,6 @@
 package com.zhy.guolinstudy.hll_ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -9,6 +10,8 @@ import android.view.View;
 import com.zhy.guolinstudy.R;
 import com.zhy.guolinstudy.R2;
 import com.zhy.guolinstudy.hll_core.delegates.HLDelegate;
+import com.zhy.guolinstudy.hll_core.net.RestClient;
+import com.zhy.guolinstudy.hll_core.net.callback.ISuccess;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,10 +28,30 @@ public class SignInDelegate extends HLDelegate {
     @BindView(R2.id.edit_sign_in_password)
     TextInputEditText mPassWord = null;
 
+    private ISignListener mISignListener = null;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener) {
+            mISignListener = (ISignListener) activity;
+        }
+    }
+
+
     @OnClick(R2.id.btn_sign_in)
     void onClickSignIn() {
         if (checkForm()) {
-
+            RestClient.builder()
+                    .url("")
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+                            SignHandler.onSignIn(response,mISignListener);
+                        }
+                    })
+                    .build()
+                    .post();
         }
     }
 
