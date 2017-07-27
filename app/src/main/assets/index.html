@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title of the document</title>
+</head>
+<body>
+我是页面
+<a href="second.html">点我</a>
+
+
+<button id="ceshi">测试事件</button>
+
+<script type="text/javascript">
+
+    function nativeCall(){
+
+        alert('woshinative');
+    }
+
+    document.getElementById('ceshi').onclick = function(){
+        var command = {
+            'action' : 'test'
+        };
+        hl.event(JSON.stringify(command));
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:minHeight="?attr/actionBarSize"
+    android:navigationIcon="@mipmap/ic_launcher"
+    app:navigationIcon="@mipmap/ic_launcher">
+
+
+    <TextView
+        android:id="@+id/tv_lose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:singleLine="true"
+        android:text="忘记密码"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+
+</android.support.v7.widget.Toolbar>
+
+
+
