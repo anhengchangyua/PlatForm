@@ -3,6 +3,7 @@ package com.zhy.guolinstudy.hll_ec.launcher;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
@@ -12,6 +13,7 @@ import com.zhy.guolinstudy.hll_core.app.AcountManager;
 import com.zhy.guolinstudy.hll_core.app.IUserChecker;
 import com.zhy.guolinstudy.hll_core.delegates.HLDelegate;
 import com.zhy.guolinstudy.hll_core.ui.launcher.ILauncherListener;
+import com.zhy.guolinstudy.hll_core.ui.launcher.LauncherHolder;
 import com.zhy.guolinstudy.hll_core.ui.launcher.LauncherHolderCreator;
 import com.zhy.guolinstudy.hll_core.ui.launcher.OnLauncherFinishTag;
 import com.zhy.guolinstudy.hll_core.ui.launcher.ScrollLauncherTag;
@@ -37,6 +39,7 @@ public class LauncherScrollDelegate extends HLDelegate implements OnItemClickLis
             mILauncherListener = (ILauncherListener) activity;
         }
     }
+
     //初始化banner
     public void initBanner() {
         INTEGERS.add(R.mipmap.launcher_00);
@@ -49,7 +52,29 @@ public class LauncherScrollDelegate extends HLDelegate implements OnItemClickLis
                 .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                 .setOnItemClickListener(this)
+                .setOnPageChangeListener(new OnPageListener())
                 .setCanLoop(false);
+    }
+
+    public class OnPageListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            if (position == INTEGERS.size() - 1) {
+                LauncherHolder.setVisible();
+            }
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
     }
 
     @Override

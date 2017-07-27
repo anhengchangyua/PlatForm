@@ -12,7 +12,7 @@ import com.zhy.guolinstudy.hll_ec.database.UserProfile;
 
 public class SignHandler {
 
-    public static void onSignUp(String response,ISignListener iSignListener) {
+    public static void onSignUp(String response, ISignListener iSignListener) {
         final JSONObject jsonObject = JSON.parseObject(response).getJSONObject("data");
         final long userId = jsonObject.getInteger("userId");
         final String name = jsonObject.getString("name");
@@ -27,9 +27,10 @@ public class SignHandler {
         //已经注册成功了
         AcountManager.setSignState(true);
         iSignListener.onSignUpSuccess();
+
     }
 
-    public static void onSignIn(String response,ISignListener iSignListener) {
+    public static void onSignIn(String response, ISignListener iSignListener) {
         final JSONObject jsonObject = JSON.parseObject(response).getJSONObject("data");
         final long userId = jsonObject.getInteger("userId");
         final String name = jsonObject.getString("name");
@@ -45,4 +46,5 @@ public class SignHandler {
         AcountManager.setSignState(true);
         iSignListener.onSignInSuccess();
     }
+
 }
