@@ -32,7 +32,7 @@ public class DatabaseManager {
 
     private void initDao(Context context) {
 
-        //数据库名字
+        //数据库名字 greenDao
         final ReleaseOpenHelper helper = new ReleaseOpenHelper(context, "fast_ec.db");
         final Database db = helper.getWritableDb();
         mDaoSession = new DaoMaster(db).newSession();
