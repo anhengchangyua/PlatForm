@@ -24,7 +24,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by wanyummy on 2017/7/25.
+ * @author zwy.
+ * @time 2017/7/25 9:25
+ * @description
  */
 
 public class LauncherDelegate extends HLDelegate implements ItimerListener {
