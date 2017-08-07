@@ -1,5 +1,6 @@
 package com.zhy.guolinstudy.hll_core.app;
 
+import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.zhy.guolinstudy.hll_core.web.event.Event;
@@ -20,11 +21,13 @@ public class Configurator {
     private static final HashMap<Object, Object> HLL_CONFIGS = new HashMap<>();
     //添加拦截器
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
+    private static final Handler HANDLER = new Handler();
 
 
     private Configurator() {
         //1 在初始化的时候我们的初始化是没有完成的。
         HLL_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+        HLL_CONFIGS.put(ConfigType.HANDLER.name(), HANDLER);
     }
 
     private static class Holder {

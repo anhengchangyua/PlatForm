@@ -21,7 +21,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class RestCreator {
 
 
-    // 惰性加载
+    //惰性加载
     private static final class ParamsHolder {
         //声明全局的请求参数：
         public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();

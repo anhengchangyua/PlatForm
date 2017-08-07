@@ -1,6 +1,7 @@
 package com.zhy.guolinstudy.hll_core.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 import java.util.HashMap;
 
@@ -31,5 +32,10 @@ public final class Hll {
 
     public static <T> T getConfiguration(ConfigType apiHost) {
         return Configurator.getInstance().getConfiguration(apiHost);
+    }
+
+
+    public static Handler getHandler() {
+        return getConfiguration(ConfigType.HANDLER);
     }
 }

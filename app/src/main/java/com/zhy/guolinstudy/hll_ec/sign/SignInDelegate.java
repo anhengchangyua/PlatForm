@@ -46,7 +46,6 @@ public class SignInDelegate extends HLDelegate {
         final String email = mEmail.getText().toString();
         final String password = mPassWord.getText().toString();
 
-
         boolean isPass = true;
 
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -56,7 +55,6 @@ public class SignInDelegate extends HLDelegate {
             mEmail.setError(null);
         }
 
-
         if (password.isEmpty() || password.length() < 6) {
             mPassWord.setError("密码错误");
             isPass = false;
@@ -64,9 +62,7 @@ public class SignInDelegate extends HLDelegate {
             mPassWord.setError(null);
         }
 
-
         return isPass;
-
     }
 
     @Override

@@ -49,7 +49,7 @@ public interface RestService {
 
     @Streaming
     @GET
-    Call<ResponseBody> download(@Url String url, @QueryMap Map<String, Object> params);
+    Call<ResponseBody> download(@Url String url);
 
     @Multipart
     @POST

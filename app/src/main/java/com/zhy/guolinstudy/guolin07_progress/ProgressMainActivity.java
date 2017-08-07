@@ -52,7 +52,7 @@ public class ProgressMainActivity extends AppCompatActivity {
                         .setDimAmount(0.5f)
                         .show();
 //
-                scheduleDismiss();
+//                scheduleDismiss();
             }
         });
     }

@@ -19,7 +19,7 @@ public class HLApplication extends Application {
         super.onCreate();
         instance = this;
         Hll.init(this)
-                .withApiHost("")
+                .withApiHost("http://www.niulinguo.com/fastec/index/index/json/")
                 .withWebEvent("test", new TestEvent())
                 .Configure();
 

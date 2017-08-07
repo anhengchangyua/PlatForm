@@ -6,9 +6,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.zhy.guolinstudy.R;
+import com.zhy.guolinstudy.hll_core.app.Hll;
 import com.zhy.guolinstudy.hll_core.net.RestClient;
-import com.zhy.guolinstudy.hll_core.net.callback.IError;
-import com.zhy.guolinstudy.hll_core.net.callback.IFailure;
 import com.zhy.guolinstudy.hll_core.net.callback.ISuccess;
 
 /**
@@ -30,28 +29,16 @@ public class ExampleDelegate extends HLDelegate {
     private void testRequest() {
 
         RestClient.builder()
-                .url("http://news.baidu.com/")
-                .loader(getContext())
-//                .params("", "")
+                .url("index_data")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-//                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
-                    }
-                })
-                .failure(new IFailure() {
-                    @Override
-                    public void onFailure() {
-                        Toast.makeText(getContext(), "error", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .error(new IError() {
-                    @Override
-                    public void onError(int code, String msg) {
+                        Toast.makeText(Hll.getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
                     }
                 })
                 .build()
                 .get();
+
     }
 }

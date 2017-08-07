@@ -6,6 +6,7 @@ package com.zhy.guolinstudy.hll_core.net;
  */
 
 public enum HttpMethod {
+//    http://www.niulinguo.com/fastec
     GET,
     POST,
     POST_ARW,

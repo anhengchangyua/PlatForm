@@ -28,7 +28,6 @@ public final class LoaderCreator {
 
     private static Indicator getIndicator(String name) {
         if (name == null || name.isEmpty()) {
-
             return null;
         }
         final StringBuilder drawableClassName = new StringBuilder();

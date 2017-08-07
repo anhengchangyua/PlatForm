@@ -51,7 +51,6 @@ public class SignUpDelegate extends HLDelegate {
 
     @OnClick(R2.id.tv_link_sign_in)
     void onClickSignIn() {
-
         start(new SignInDelegate());
     }
 

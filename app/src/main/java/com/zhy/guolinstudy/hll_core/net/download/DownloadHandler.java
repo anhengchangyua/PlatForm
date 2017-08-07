@@ -1,7 +1,5 @@
 package com.zhy.guolinstudy.hll_core.net.download;
 
-import android.os.AsyncTask;
-
 import com.zhy.guolinstudy.hll_core.net.RestCreator;
 import com.zhy.guolinstudy.hll_core.net.callback.IError;
 import com.zhy.guolinstudy.hll_core.net.callback.IFailure;
@@ -9,11 +7,6 @@ import com.zhy.guolinstudy.hll_core.net.callback.IRequest;
 import com.zhy.guolinstudy.hll_core.net.callback.ISuccess;
 
 import java.util.WeakHashMap;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by wanyummy on 2017/7/24.
@@ -57,19 +50,19 @@ public class DownloadHandler {
         if (REQUEST != null) {
             REQUEST.onRequestStart();
         }
-        RestCreator.getRestService().download(URL, PARAMS).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-                final ResponseBody body = response.body();
-                final SaveFileTask saveFileTask = new SaveFileTask(REQUEST, SUCCESS);
-                saveFileTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, DOWNLOAD_DIR, EXTENSION, body, NAME);
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
+//        RestCreator.getRestService().download(URL, PARAMS).enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//
+//                final ResponseBody body = response.body();
+//                final SaveFileTask saveFileTask = new SaveFileTask(REQUEST, SUCCESS);
+//                saveFileTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, DOWNLOAD_DIR, EXTENSION, body, NAME);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//            }
+//        });
     }
 }
