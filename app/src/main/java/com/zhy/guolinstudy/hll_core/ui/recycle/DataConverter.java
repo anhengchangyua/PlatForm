@@ -8,10 +8,11 @@ import java.util.ArrayList;
  */
 
 public abstract class DataConverter {
-
+    //1 数据集合创建
     protected final ArrayList<MultipleItemEntity> ENTITIES = new ArrayList<>();
     private String mJsonData = null;
 
+    //2 对外提供方法
     public abstract ArrayList<MultipleItemEntity> convert();
 
     public DataConverter setJsonData(String json) {

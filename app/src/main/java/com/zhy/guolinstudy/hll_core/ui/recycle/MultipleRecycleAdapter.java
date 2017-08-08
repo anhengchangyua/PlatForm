@@ -43,8 +43,8 @@ public class MultipleRecycleAdapter extends BaseMultiItemQuickAdapter<MultipleIt
         //设置不同的布局
         addItemType(ItemType.TEXT, R.layout.item_multiple_text);
         addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
-        addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
         addItemType(ItemType.BANNER, R.layout.item_multiple_banner);
+        addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
         //设置宽度的监听
         setSpanSizeLookup(this);
         openLoadAnimation();

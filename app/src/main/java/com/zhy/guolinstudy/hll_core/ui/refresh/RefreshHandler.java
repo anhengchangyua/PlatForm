@@ -25,9 +25,9 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener
     private MultipleRecycleAdapter mAdapter = null;
     private final DataConverter CONVERTER;
 
-    private RefreshHandler(SwipeRefreshLayout refreshLayout, RecyclerView recyclerView,
-                           DataConverter converter,
-                           PagingBean bean) {
+    public RefreshHandler(SwipeRefreshLayout refreshLayout, RecyclerView recyclerView,
+                          DataConverter converter,
+                          PagingBean bean) {
         this.REFRESH_LAYOUT = refreshLayout;
         this.RECYCLERVIEW = recyclerView;
         this.CONVERTER = converter;
@@ -38,7 +38,6 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener
     public static RefreshHandler create(SwipeRefreshLayout refreshLayout, RecyclerView recyclerView,
                                         DataConverter converter) {
         return new RefreshHandler(refreshLayout, recyclerView, converter, new PagingBean());
-
     }
 
 
@@ -67,7 +66,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener
                         mAdapter = MultipleRecycleAdapter.create(CONVERTER.setJsonData(response));
                         mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
                         RECYCLERVIEW.setAdapter(mAdapter);
-                            BEAN.addIndex();
+                        BEAN.addIndex();
                     }
                 })
                 .build()

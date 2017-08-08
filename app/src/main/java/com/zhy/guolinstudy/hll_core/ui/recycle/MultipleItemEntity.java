@@ -12,39 +12,36 @@ import java.util.LinkedHashMap;
 
 public class MultipleItemEntity implements MultiItemEntity {
 
-    // 1 数据
-    private final ReferenceQueue<LinkedHashMap<Object, Object>> queue = new ReferenceQueue<>();
-    private final LinkedHashMap<Object, Object> link = new LinkedHashMap<>();
-    private SoftReference<LinkedHashMap<Object, Object>> soft = new SoftReference<LinkedHashMap<Object, Object>>(link, queue);
 
-    // 2 构造函数给builder传值
-    MultipleItemEntity(LinkedHashMap<Object, Object> data) {
-        soft.get().putAll(data);
+    private final ReferenceQueue<LinkedHashMap<Object, Object>> ITEM_QUEUE = new ReferenceQueue<>();
+    private final LinkedHashMap<Object, Object> MUITIPLE_FIELDS = new LinkedHashMap<>();
+    private final SoftReference<LinkedHashMap<Object, Object>> FIELDS_REFERENCE =
+            new SoftReference<>(MUITIPLE_FIELDS, ITEM_QUEUE);
+
+    public MultipleItemEntity(LinkedHashMap<Object, Object> fields) {
+        FIELDS_REFERENCE.get().putAll(fields);
     }
 
-    // 3 创建builder
     public static MultipleItemEntityBuilder builder() {
         return new MultipleItemEntityBuilder();
     }
 
-    // 4 get
+    @Override
+    public int getItemType() {
+        return (int) FIELDS_REFERENCE.get().get(MultipleFields.ITEM_TYPE);
+    }
+
     @SuppressWarnings("unchecked")
-    final <T> T getField(Object key) {
-        return (T) soft.get().get(key);
+    public final <T> T getField(Object key) {
+        return (T) FIELDS_REFERENCE.get().get(key);
     }
 
     public final LinkedHashMap<?, ?> getFields() {
-        return soft.get();
+        return FIELDS_REFERENCE.get();
     }
 
-    //5 set
-    public final MultipleItemEntity setField(Object key, Object value) {
-        soft.get().put(key, value);
+    public final MultiItemEntity setField(Object key, Object value) {
+        FIELDS_REFERENCE.get().put(key, value);
         return this;
-    }
-
-    @Override
-    public int getItemType() {
-        return (int) soft.get().get(MultipleFields.ITEM_TYPE);
     }
 }

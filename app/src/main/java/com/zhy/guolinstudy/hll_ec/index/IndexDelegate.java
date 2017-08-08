@@ -48,11 +48,15 @@ public class IndexDelegate extends BottomItemDelegate {
 
     private RefreshHandler mRefreshHandler = null;
 
-    private void initRecyclerView() {
-        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
-        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.gray), 5));
 
+    @Override
+    public Object setLayout() {
+        return R.layout.delegate_index;
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
     }
 
     @Override
@@ -70,15 +74,11 @@ public class IndexDelegate extends BottomItemDelegate {
         mRefreshLayout.setProgressViewOffset(true, 120, 300);
     }
 
+    private void initRecyclerView() {
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
+        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.gray), 5));
 
-    @Override
-    public Object setLayout() {
-        return R.layout.delegate_index;
-    }
-
-    @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
     }
 
     @Override
