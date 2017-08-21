@@ -41,12 +41,12 @@ public abstract class WebDelegate extends HLDelegate implements IWebViewInitiali
         super.onCreate(savedInstanceState);
         final Bundle args = getArguments();
         mUrl = args.getString("URL");
-        initWebView();
+        initWebViews();
     }
 
     //7 新建一个方法用来初始化webview
     @SuppressLint("JavascriptInterface")
-    public void initWebView() {
+    public void initWebViews() {
         if (mWebView != null) {
             mWebView.removeAllViews();
             mWebView.destroy();

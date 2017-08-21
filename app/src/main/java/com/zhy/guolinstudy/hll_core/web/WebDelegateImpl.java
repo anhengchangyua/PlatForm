@@ -43,11 +43,9 @@ public class WebDelegateImpl extends WebDelegate {
         if (getUrl() != null) {
             //用原生的方式模拟web 跳转并进行页面加载，在web - client下面,需要用到WebViewClient
             //2 通过以router的方式跳转到此处，然后加载。
-            Router.getInstance().loadPage(getWebView(),getUrl());
+            Router.getInstance().loadPage(getWebView(), getUrl());
         }
-
     }
-
 
 
     @Override

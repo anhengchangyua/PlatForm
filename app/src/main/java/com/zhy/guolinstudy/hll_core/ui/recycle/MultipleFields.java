@@ -4,7 +4,7 @@ package com.zhy.guolinstudy.hll_core.ui.recycle;
  * Created by wanyummy on 2017/8/7.
  */
 
-public enum  MultipleFields {
+public enum MultipleFields {
     ITEM_TYPE,
     TEXT,
     IMAGE_URL,

@@ -38,7 +38,6 @@ public class Router {
         }
 
         final HLDelegate topDelegate = delegate.getTopDelegate();
-
         // 如果不是就进行原生跳转
         final WebDelegateImpl webDelegate = WebDelegateImpl.create(url);
         topDelegate.start(webDelegate);

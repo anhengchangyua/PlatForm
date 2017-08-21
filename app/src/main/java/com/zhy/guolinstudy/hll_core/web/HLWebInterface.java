@@ -8,6 +8,7 @@ import com.zhy.guolinstudy.hll_core.web.event.EventManager;
 
 /**
  * Created by wanyummy on 2017/7/14.
+ * 用来与原生交互的
  */
 
 final class HLWebInterface {
@@ -22,7 +23,7 @@ final class HLWebInterface {
         return new HLWebInterface(delegate);
     }
 
-    //只有加注解时间才能响应
+    //只有加注解才能响应
     @SuppressWarnings("unused")
     @JavascriptInterface
     public String event(String params) {

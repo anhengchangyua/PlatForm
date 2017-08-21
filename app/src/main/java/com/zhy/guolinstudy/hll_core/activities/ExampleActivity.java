@@ -14,8 +14,8 @@ import android.support.v7.app.ActionBar;
 import android.webkit.MimeTypeMap;
 
 import com.zhy.guolinstudy.guolin01.WpsModel;
+import com.zhy.guolinstudy.guolin14_download.DownloadDelegate;
 import com.zhy.guolinstudy.hll_core.delegates.HLDelegate;
-import com.zhy.guolinstudy.hll_ec.index.IndexDelegate;
 
 import java.io.File;
 
@@ -71,7 +71,7 @@ public class ExampleActivity extends ProxyActivity {
 
     @Override
     public HLDelegate setRootDelegate() {
-        return new IndexDelegate();
+        return new DownloadDelegate();
     }
 
 

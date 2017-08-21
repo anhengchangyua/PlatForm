@@ -1,6 +1,5 @@
 package com.zhy.guolinstudy.hll_core.bottom;
 
-import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -44,8 +43,6 @@ public abstract class BottomItemDelegate extends HLDelegate implements View.OnKe
             }
             return true;
         }
-
-
         return false;
     }
 }
