@@ -16,12 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.zhy.uutils.CanlendarActivityF">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <activity android:name="com.zhy.uutils.dialogplus_github.DialogplusActivity" />
 
@@ -34,7 +28,6 @@
                 <data android:scheme="wanyu" />
             </intent-filter>
         </activity>
-        <activity android:name="com.zhy.uutils.BasicActivity" />
     </application>
 
 </manifest>
