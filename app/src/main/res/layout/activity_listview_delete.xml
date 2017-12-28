@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.zhy.guolinstudy.guolin01.MyListView
+    <com.zhy.uutils.listview_custome.MyListView
         android:id="@+id/my_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-    </com.zhy.guolinstudy.guolin01.MyListView>
+    </com.zhy.uutils.listview_custome.MyListView>
 
 </RelativeLayout>

@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -79,8 +79,14 @@ dependencies {
     compile 'com.choices.divider:RecyclerView_Divider:1.0.0'
     //左滑事件
     compile 'com.github.anzaizai:EasySwipeMenuLayout:1.1.1'
-    //下载库
+
+    //download
     compile 'com.arialyy.aria:aria-core:3.2.20'
     annotationProcessor 'com.arialyy.aria:aria-compiler:3.2.20'
+    //canlendar jar
+    compile 'com.github.traex.calendarlistview:library:1.2.3'
+    compile 'com.prolificinteractive:material-calendarview:1.4.3'
+    compile 'com.squareup:android-times-square:1.6.5@aar'
+    compile 'com.github.alamkanak:android-week-view:1.2.6'
 
 }

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         tools:showIn="@layout/single_task_delegate">
 
-        <com.zhy.guolinstudy.guolin14_download.HorizontalProgressBarWithNumber
+        <com.zhy.uutils.download_aria.HorizontalProgressBarWithNumber
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"

@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhy.guolinstudy">
+    package="com.zhy.uutils">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!--往sdcard中写入数据的权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--在sdcard中创建/删除文件的权限 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
-        android:name=".hll_core.HLApplication"
+        android:name="com.zhy.uutils.hll_core.HLApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".hll_core.activities.ExampleActivity">
+        <activity android:name="com.zhy.uutils.CanlendarActivityF">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".guolin03_dialogplus_github.DialogplusActivity" />
+        <activity android:name="com.zhy.uutils.dialogplus_github.DialogplusActivity" />
+
+
+        <!--主页面-->
+        <activity android:name="com.zhy.uutils.scheme_preview.TestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wanyu" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.zhy.uutils.BasicActivity" />
     </application>
 
 </manifest>
