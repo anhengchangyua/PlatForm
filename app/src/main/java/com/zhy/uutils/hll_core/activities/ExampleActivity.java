@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 
-import com.zhy.uutils.guolin16_canlendar.CanlendarDelegateT;
 import com.zhy.uutils.hll_core.delegates.HLDelegate;
 
 /**
@@ -26,7 +25,7 @@ public class ExampleActivity extends ProxyActivity {
 
     @Override
     public HLDelegate setRootDelegate() {
-        return new CanlendarDelegateT();
+        return null;
     }
 
 

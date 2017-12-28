@@ -21,11 +21,10 @@
 
 
         <!--主页面-->
-        <activity android:name="com.zhy.uutils.scheme_preview.TestActivity">
+        <activity android:name=".hll_core.activities.ExampleActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="wanyu" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
