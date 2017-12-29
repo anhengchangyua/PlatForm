@@ -1,23 +1,24 @@
 package com.zhy.uutils.scheme_preview;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.zhy.uutils.R;
+import com.zhy.uutils.scheme_preview.util.Constants;
+import com.zhy.uutils.scheme_preview.util.NotifyUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by wanyummy on 2017/8/22.
+ * Created by wanyummy on 2017/12/29.
  */
 
-public class SchemeActivity extends AppCompatActivity {
+public class AAAAAA extends AppCompatActivity {
+
 
     @BindView(R.id.tv_scheme)
     TextView tvScheme;
@@ -31,15 +32,6 @@ public class SchemeActivity extends AppCompatActivity {
 
     @OnClick(R.id.tv_scheme)
     public void onClick() {
-
-        Uri data = Uri.parse("wanyu://auth_activity");
-        Intent intent = new Intent(Intent.ACTION_VIEW, data);
-        try {
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+        NotifyUtil.createNotify(this, Constants.KNOWN_SCHEME + "test1?title=首页测试2", "首页测试22");
     }
 }

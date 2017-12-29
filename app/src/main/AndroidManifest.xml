@@ -19,6 +19,17 @@
 
         <activity android:name="com.zhy.uutils.dialogplus_github.DialogplusActivity" />
 
+        <activity android:name=".scheme_preview.AnalyzeActivity">
+            <intent-filter>
+                <data
+                    android:host="lovejjfg.com"
+                    android:scheme="test" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
 
         <!--主页面-->
         <activity android:name=".hll_core.activities.ExampleActivity">
