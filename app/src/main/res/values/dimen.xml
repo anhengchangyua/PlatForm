@@ -12,6 +12,7 @@
     <dimen name="title_text_size">18sp</dimen>
     <dimen name="button_text_size">16sp</dimen>
     <dimen name="sample_text_size">12sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
 
 
     <dimen name="dimen_margin_circle">4dp</dimen>

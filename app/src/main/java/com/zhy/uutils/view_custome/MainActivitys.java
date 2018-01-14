@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,7 +30,7 @@ import butterknife.ButterKnife;
 
 public class MainActivitys extends AppCompatActivity {
 
-
+    private ViewDragHelper mViewDragHelper;
     int downy;
     @BindView(R.id.tv_type)
     TextView tvType;
@@ -55,6 +56,7 @@ public class MainActivitys extends AppCompatActivity {
 
         topBottom = heightWindow - getViewHeight(llBottom);
 
+        mViewDragHelper.setEdgeTrackingEnabled(ViewDragHelper.EDGE_BOTTOM);
 
     }
 

@@ -40,10 +40,12 @@ public class UNetClientBuilder {
     //加入文件参数
     private File mFile = null;
 
+    UNetClientBuilder() {
 
-
+    }
 
 //    public UNetClient build() {
-//        return new UNetClient();
+////        return new UNetClient();
 //    }
 }
+

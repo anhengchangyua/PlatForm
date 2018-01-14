@@ -39,6 +39,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".view_custome.MainActivitys" />
+
+        <service
+            android:name=".aidl_study.RemoteService"
+            android:process=":remote"
+            android:enabled="true"
+            android:exported="true"/>
+
     </application>
 
 </manifest>
