@@ -1,0 +1,39 @@
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.zhy.uutils.drag_view_practice.DragLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/accent"
+        android:orientation="vertical">
+
+        
+        <TextView
+            android:id="@+id/desc"
+            android:tag="desc"
+            android:textSize="35sp"
+            android:gravity="center"
+            android:text="Loreum Loreum Loreum Loreum Loreum Loreum LoreumLoreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum"
+            android:textColor="@android:color/background_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF00FF"/>
+
+
+        <TextView
+            android:id="@+id/header_pro"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textSize="25sp"
+            android:text="Drag me to finish"
+            android:tag="text"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:background="#AD78CC"/>
+
+    </com.zhy.uutils.drag_view_practice.DragLayout>
+</FrameLayout>

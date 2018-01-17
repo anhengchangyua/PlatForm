@@ -32,13 +32,15 @@
 
 
         <!--主页面-->
-        <activity android:name=".view_custome.MainActivity">
+        <activity android:name=".drag_view_practice.DragActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".view_custome.MainActivitys" />
+        <!--<activity android:name=".drag_view_finish.YoutubeActivity" />-->
+        <activity android:name=".drag_view_finish.DragActivity" />
 
         <service
             android:name=".aidl_study.RemoteService"
