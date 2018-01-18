@@ -12,6 +12,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,9 @@ public class YoutubeLayout extends ViewGroup {
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             mTop = top;
 
+            Log.d("top", String.valueOf(mTop));
+            Log.d("dydy", String.valueOf(dy));
+
             mDragOffset = (float) top / mDragRange;
 
 //            mHeaderView.setPivotX(mHeaderView.getWidth());
@@ -116,7 +120,6 @@ public class YoutubeLayout extends ViewGroup {
         public int clampViewPositionVertical(View child, int top, int dy) {
             final int topBound = getPaddingTop();
             final int bottomBound = getHeight() - mHeaderView.getHeight() - mHeaderView.getPaddingBottom();
-
 
             final int newTop = Math.min(Math.max(top, topBound), bottomBound);
             return newTop;

@@ -20,7 +20,7 @@ import com.zhy.uutils.R;
  */
 
 public class RemoteActivity extends AppCompatActivity {
-    private final static String TAG = "MainActivity";
+    private final static String TAG = "DragMainActivity";
     private IRemoteService remoteService;
 
     @Override

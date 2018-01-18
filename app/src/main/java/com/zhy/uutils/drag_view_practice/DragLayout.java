@@ -3,13 +3,13 @@ package com.zhy.uutils.drag_view_practice;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.zhy.uutils.R;
 
 /**
@@ -27,10 +27,23 @@ public class DragLayout extends ViewGroup {
 
     private int mDragRange;
     private int mTop;
+    private int mTopx;
     private float mDragOffset;
 
     private float mInitialMotionX;
     private float mInitialMotionY;
+
+    //接口
+    private OnFinishScroll mFinishScroll;
+
+    public void setOnFinishScroll(OnFinishScroll finishScroll) {
+        this.mFinishScroll = finishScroll;
+    }
+
+    public interface OnFinishScroll {
+        void complete();
+    }
+
 
     public DragLayout(Context context) {
         this(context, null);
@@ -62,28 +75,42 @@ public class DragLayout extends ViewGroup {
             return child == mFooterView;
         }
 
+        //2
+        @SuppressLint("LongLogTag")
+        @Override
+        public int clampViewPositionVertical(View child, int top, int dy) {
+
+            final int topBound = getPaddingTop();
+            final int bottomBound = getHeight() - mFooterView.getHeight() - mFooterView.getPaddingBottom();
+
+            final int newTop = Math.min(Math.max(top, topBound), bottomBound);
+            return newTop;
+
+        }
 
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
-            mTop = top;
+            mTop = mDragRange - top;
 
-            mDragOffset = (float) top / mDragRange;
+            mDragOffset = (float) mTop / mDragRange;
 
-//            mFooterView.setPivotX(mFooterView.getWidth());
-//            mFooterView.setPivotY(mFooterView.getHeight());
-//            mFooterView.setScaleX(1 - mDragOffset / 2);
-//            mFooterView.setScaleY(1 - mDragOffset / 2);
+            mDescView.setAlpha(1 - mDragOffset);
 
-            mFooterView.setAlpha(1 - mDragOffset);
+            if (mDragOffset > 0.4f) {
+                if (mFinishScroll != null) {
+                    mFinishScroll.complete();
+                }
+            }
 
             requestLayout();
         }
 
+
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
-            int top = 300;
-            if ( mDragOffset > 0.5f) {
-                top = mDragRange;
+            int top = mDragRange;
+            if (mDragOffset > 0.4f) {
+                top = 0;
             }
             //手指释放时
             mDragHelper.settleCapturedViewAt(0, top);
@@ -94,17 +121,13 @@ public class DragLayout extends ViewGroup {
         public int getViewVerticalDragRange(View child) {
             return mDragRange;
         }
+    }
 
-        @Override
-        public int clampViewPositionVertical(View child, int top, int dy) {
-            final int bottomBound = getPaddingTop();
-            final int bydoBound = getHeight() - mFooterView.getHeight() - mFooterView.getPaddingBottom();
-
-            final int newTop = Math.min(Math.max(top, bottomBound),bydoBound);
-            return newTop;
+    @Override
+    public void computeScroll() {
+        if (mDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(this);
         }
-
-
     }
 
     @Override
@@ -171,11 +194,9 @@ public class DragLayout extends ViewGroup {
                 final int slop = mDragHelper.getTouchSlop();
                 if (dx * dx + dy * dy < slop * slop && isHeaderViewUnder) {
                     if (mDragOffset == 0) {
-//                        smoothSlideTo(1f);
-                        ToastUtils.showShort("11111");
+                        smoothSlideTo(0f);
                     } else {
-//                        smoothSlideTo(0f);
-                        ToastUtils.showShort("22222");
+                        smoothSlideTo(1f);
                     }
                 }
                 break;
@@ -183,6 +204,17 @@ public class DragLayout extends ViewGroup {
         }
 
         return isHeaderViewUnder;
+    }
+
+    boolean smoothSlideTo(float slideOffset) {
+        final int topBound = getPaddingTop();
+        int y = (int) (topBound + slideOffset * mDragRange);
+
+        if (mDragHelper.smoothSlideViewTo(mFooterView, mFooterView.getLeft(), y)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -198,20 +230,20 @@ public class DragLayout extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int height = mFooterView.getMeasuredHeight();
-        int height1 = getHeight();
+
         mDragRange = getHeight() - mFooterView.getHeight();
+
 
         mDescView.layout(
                 0,
-                mTop,
+                -mTop,
                 r,
-                getHeight() - mFooterView.getMeasuredHeight() + mTop);
+                getHeight() - mFooterView.getMeasuredHeight() - mTop);
 
         mFooterView.layout(
                 0,
-                getHeight() - mFooterView.getMeasuredHeight() + mTop,
+                getHeight() - mFooterView.getMeasuredHeight() - mTop,
                 r,
-                getHeight());
+                b - mTop);
     }
 }

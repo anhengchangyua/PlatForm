@@ -1,4 +1,4 @@
-<FrameLayout
+<RelativeLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -6,34 +6,84 @@
 
 
     <com.zhy.uutils.drag_view_practice.DragLayout
+        android:id="@+id/ssss"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/accent"
         android:orientation="vertical">
 
-        
-        <TextView
+
+        <RelativeLayout
             android:id="@+id/desc"
-            android:tag="desc"
-            android:textSize="35sp"
-            android:gravity="center"
-            android:text="Loreum Loreum Loreum Loreum Loreum Loreum LoreumLoreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum Loreum"
-            android:textColor="@android:color/background_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FF00FF"/>
+            android:background="@color/action_bar_tittle_color_555555">
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:text="视频咨询"
+                android:textColor="#ffffff"
+                android:textSize="21sp" />
+
+            <FrameLayout
+                android:id="@+id/fl_time"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_below="@id/tv_type"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="76dp">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="13:30"
+                    android:textColor="#ffffff"
+                    android:textSize="35sp" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fl_time"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="10分钟后提醒"
+
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </RelativeLayout>
 
 
-        <TextView
+        <LinearLayout
             android:id="@+id/header_pro"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:textSize="25sp"
-            android:text="Drag me to finish"
-            android:tag="text"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:background="#AD78CC"/>
+            android:layout_height="66dp"
+            android:layout_alignParentBottom="true"
+            android:background="#42b1ff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="滑动关闭闹钟"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
 
     </com.zhy.uutils.drag_view_practice.DragLayout>
-</FrameLayout>
+</RelativeLayout>

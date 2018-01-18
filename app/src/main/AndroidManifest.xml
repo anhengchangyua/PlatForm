@@ -25,6 +25,7 @@
                     android:host="lovejjfg.com"
                     android:scheme="test" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
@@ -32,21 +33,27 @@
 
 
         <!--主页面-->
-        <activity android:name=".drag_view_practice.DragActivity">
+        <activity android:name=".drag_view_practice.DragMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view_custome.MainActivitys" />
+        <activity
+            android:name=".view_custome.MainActivitys"
+            android:theme="@style/AppTheme.NoBackground" />
         <!--<activity android:name=".drag_view_finish.YoutubeActivity" />-->
         <activity android:name=".drag_view_finish.DragActivity" />
+        <activity
+            android:name=".drag_view_practice.DragActivity"
+            android:theme="@style/AppTheme.NoBackground" />
+        <!--<activity android:name=".drag_view_practice.DragMainActivity" />-->
 
         <service
             android:name=".aidl_study.RemoteService"
-            android:process=":remote"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true"
+            android:process=":remote" />
 
     </application>
 
